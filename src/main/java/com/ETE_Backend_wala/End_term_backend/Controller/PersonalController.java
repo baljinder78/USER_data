@@ -44,4 +44,17 @@ public class PersonalController {
         System.out.println(email);
         userService.deleteuser(email);
     }
+
+    @RequestMapping(value = "/update",method = RequestMethod.PUT)
+    public void update(@RequestBody String data) throws JsonProcessingException {
+        System.out.println(data);
+        User user = new ObjectMapper().readValue(data, User.class);
+        System.out.println(user.toString());
+        userService.adduser(user);
+
+
+
+
+
+    }
 }

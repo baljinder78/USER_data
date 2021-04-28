@@ -44,5 +44,12 @@ public class UserService  {
     {
          this.userrepo.deleteById(email);
     }
+
+    public void update(User user)
+    {
+            this.userrepo.save(user);
+
+
+    }
 }
 

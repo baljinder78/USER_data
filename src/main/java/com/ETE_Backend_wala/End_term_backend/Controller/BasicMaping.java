@@ -16,6 +16,6 @@ public class BasicMaping {
     @RequestMapping("/userinfo")
     public String userinfo()
     {
-        return "/html/Userinfo";
+        return "html/Userinfo";
     }
 }
