@@ -4,29 +4,29 @@
 
 body{
    background-image: url("../images/000000000000001kanki.png");
-    background-color: green;
+
     padding: 0;
     color: white;
     background-repeat: no-repeat;
 }
 
-/*#navbar{*/
-/*    background-color: #000201;*/
-/*    color: #d0d7ea;*/
-/*    height:100px;*/
-/*    width: 100%;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    font-family: 'Lobster', cursive;*/
+#navbar{
+    background-color: #000201;
+    color: #d0d7ea;
+    height:100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Lobster', cursive;
 
-/*}*/
-/*.btn{*/
-/*    padding:30px 100px;*/
-/*    font-size:30px;*/
-/*    text-decoration: none;*/
-/*    color: #d0d7ea;*/
-/*}*/
-/*.btn:hover{*/
-/*    background-color: #ba0072;*/
-/*    color: #000c1d;*/
-/*}*/
+}
+.btn{
+    padding:30px 100px;
+    font-size:30px;
+    text-decoration: none;
+    color: #d0d7ea;
+}
+.btn:hover{
+    background-color: #ba0072;
+    color: #000c1d;
+}
