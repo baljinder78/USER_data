@@ -12,4 +12,10 @@ public class BasicMaping {
     {
         return "index";
     }
+
+    @RequestMapping("/userinfo")
+    public String userinfo()
+    {
+        return "/html/Userinfo";
+    }
 }

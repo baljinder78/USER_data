@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <title>Home Page</title>
     <link rel="stylesheet" href="../CSS/index.css">
+    <script src="../JS/index.js"></script>
 </head>
 <body>
 <div id="navbar">
     <a class="btn" href="/Login" >Login</a>
     <a class="btn" href="/signup">Signup</a>
+</div>
+
+<div>
+    <form id="my_form" action="/userinfo" onsubmit="adddata()" method="get">
+        Name
+        <input type="text" id="name">
+        Age
+        <input type="number" id="age">
+        Email Id
+        <input type="email" id="email">
+        Address
+        <input type="text" id="address">
+        Phone Number
+        <input type="number" id="ph_no">
+
+        <input type="submit" placeholder="submit">
+
+    </form>
 </div>
 </body>
 </html>
