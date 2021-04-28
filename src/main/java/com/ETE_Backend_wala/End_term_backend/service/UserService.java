@@ -5,6 +5,7 @@ import com.ETE_Backend_wala.End_term_backend.repo.Userrepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,12 @@ public class UserService  {
             return true;
         }
 
+    }
+    public List<User> getallusers()
+    {
+//        List<User> userlist=userrepo.findAll();
+//
+        return (List<User>) this.userrepo.findAll();
     }
 }
 

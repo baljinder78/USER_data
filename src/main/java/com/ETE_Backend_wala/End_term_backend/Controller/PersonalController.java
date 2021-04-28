@@ -8,6 +8,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 public class PersonalController {
@@ -27,6 +29,12 @@ public class PersonalController {
         }
         System.out.println("no");
         return "false";
+    }
+    @RequestMapping("/getallusers")
+    public List<User> getusers()  {
+        List<User> userList=userService.getallusers();
+        System.out.println(userList);
+        return userList;
     }
     
 }

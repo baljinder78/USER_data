@@ -9,21 +9,21 @@ function adddata()
     let ph_no=document.getElementById("ph_no").value;
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "https://userdetailsbybal.herokuapp.com/add", true);
+    xhttp.open("POST", "http://localhost:8080/add", true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             alert(this.responseText)
             if(this.responseText==="false")
             {
                  alert("UserInvalid");
-                 window.location="https://userdetailsbybal.herokuapp.com/"
+                 window.location="http://localhost:8080/"
                 return
             }
             else{
                 alert("hogya");
 
-                 parent.setAttribute("action","https://userdetailsbybal.herokuapp.com/userinfo");
-                window.location="https://userdetailsbybal.herokuapp.com/userinfo";
+                 parent.setAttribute("action","http://localhost:8080/userinfo");
+                window.location="http://localhost:8080/userinfo";
 
                 //console.log(localStorage.getItem("user_name"));
 
