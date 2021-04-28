@@ -37,4 +37,11 @@ public class PersonalController {
         System.out.println(userList);
         return userList;
     }
+
+    @RequestMapping(value = "/deleteuser",method = RequestMethod.DELETE)
+    public void deleteuser(@RequestBody String email)
+    {
+        System.out.println(email);
+        userService.deleteuser(email);
+    }
 }

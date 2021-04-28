@@ -50,3 +50,15 @@ body{
     border: 2px solid #000201;
     margin: 2%;
 }
+
+.Delete{
+    background-color: #000c1d;
+    border: 2px solid red;
+    width:80px;
+}
+
+.edit{
+    background-color: #ba0072;
+    border: 2px solid blue;
+    width: 50px;
+}

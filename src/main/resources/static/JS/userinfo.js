@@ -64,7 +64,44 @@ function users(data)
     phn_a.appendChild(text_pa)
     maindiv.appendChild(phn_a)
 
+    let dlt_btn=document.createElement("Button")
+    let texting=document.createTextNode("DELETE");
+    dlt_btn.appendChild(texting)
+    dlt_btn.setAttribute("class","Delete")
+    dlt_btn.setAttribute("onclick","delet()")
+    maindiv.appendChild(dlt_btn);
+
+    let edit_btn=document.createElement("Button")
+    let texto=document.createTextNode("EDIT");
+    edit_btn.appendChild(texto)
+    edit_btn.setAttribute("class","edit")
+    edit_btn.setAttribute("onclick","edit(this)")
+    maindiv.appendChild(edit_btn);
+
     parent.appendChild(maindiv)
 
 
 }
+function delet()
+{
+    var td_d = event.target.parentNode;
+     var c = td_d.children;
+    // for(let i=0;i<c.length-2;i++)
+    // {
+    //     alert(c[i].textContent);
+    // }
+    var xhttp1 = new XMLHttpRequest();
+    xhttp1.open("DELETE", "http://localhost:8080/deleteuser", true);
+    xhttp1.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        alert("UserDeleted succesfully")
+
+        }
+    };
+
+
+    xhttp1.send(c[2].textContent);
+
+    td_d.parentNode.removeChild(td_d);
+}
+

@@ -39,5 +39,10 @@ public class UserService  {
 //
         return (List<User>) this.userrepo.findAll();
     }
+
+    public void deleteuser(String email)
+    {
+         this.userrepo.deleteById(email);
+    }
 }
 
