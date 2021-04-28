@@ -8,7 +8,7 @@ function fun()
 
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://localhost:8080/getallusers", true);
+    xhttp.open("GET", "https://userdetailsbybal.herokuapp.com/getallusers", true);
     // xhttp.open("GET", "http://localhost:8080/getallusers", true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -97,7 +97,7 @@ function delet()
     //     alert(c[i].textContent);
     // }
     var xhttp1 = new XMLHttpRequest();
-    xhttp1.open("DELETE", "http://localhost:8080/deleteuser", true);
+    xhttp1.open("DELETE", "https://userdetailsbybal.herokuapp.com/deleteuser", true);
     // xhttp1.open("DELETE", "http://localhost:8080/deleteuser", true);
     xhttp1.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
