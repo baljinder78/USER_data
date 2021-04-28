@@ -30,11 +30,11 @@ public class PersonalController {
         System.out.println("no");
         return "false";
     }
+
     @RequestMapping("/getallusers")
     public List<User> getusers()  {
         List<User> userList=userService.getallusers();
         System.out.println(userList);
         return userList;
     }
-    
 }
