@@ -115,12 +115,28 @@ function edit()
 {
     let td_d = event.target.parentNode;
     let c = td_d.children;
-    // for(let i=0;i<c.length-2;i++)
-    // {
-    //     alert(c[i].);
-    //  }
+     let tempname=c[0].textContent;
+     let tempage=c[1].textContent
+    let tempemail=c[2].textContent
+    let tempaddress=c[3].textContent
+    let tempphone=c[4].textContent
+
+    document.getElementById("name").value=tempname;
+
+    document.getElementById("age").value=tempage;
+
+    document.getElementById("email").value=tempemail;
+
+    document.getElementById("address").value=tempaddress;
+
+
+    document.getElementById("ph_no").value=tempphone;
+
+
+
     var  modal=document.getElementById("myModal")
     modal.style.display = "block";
+
 
 
     // var xhttp1 = new XMLHttpRequest();
@@ -138,6 +154,7 @@ function clos()
 {
     var  modal=document.getElementById("myModal")
     modal.style.display = "none";
+
 }
 
 function updatedata()
@@ -150,20 +167,14 @@ function updatedata()
     let ph_no=document.getElementById("ph_no").value;
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("PUT", "https://userdetailsbybal.herokuapp.com/update", true);
-    // xhttp.open("PUT", "http://localhost:8080/update", true);
+   xhttp.open("PUT", "https://userdetailsbybal.herokuapp.com/update", true);
+     // xhttp.open("PUT", "http://localhost:8080/update", true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            alert(this.responseText)
-            if(this.responseText==="false")
-            {
-                alert("UserInvalid");
-                return
-            }
-            else{
 
-
-            }
+            var  modal=document.getElementById("myModal")
+            modal.style.display = "none";
+            fun()
 
         }
     };

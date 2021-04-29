@@ -47,7 +47,15 @@ public class UserService  {
 
     public void update(User user)
     {
-            this.userrepo.save(user);
+        if(this.userrepo.existsById(user.getEmail())){
+            try {
+                this.userrepo.save(user);
+            }
+            catch (Exception e)
+            {
+               return;
+            }
+        }
 
 
     }

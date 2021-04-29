@@ -50,7 +50,7 @@ public class PersonalController {
         System.out.println(data);
         User user = new ObjectMapper().readValue(data, User.class);
         System.out.println(user.toString());
-        userService.adduser(user);
+        userService.update(user);
 
 
 
