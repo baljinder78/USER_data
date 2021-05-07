@@ -9,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @CrossOrigin
 @RestController
 public class PersonalController {
-
+    String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";
+    Pattern pattern = Pattern.compile(regex);
     @Autowired
     public UserService userService;
 
@@ -22,6 +25,15 @@ public class PersonalController {
         System.out.println(data);
         User user = new ObjectMapper().readValue(data, User.class);
         System.out.println(user.toString());
+        if((user.getEmail()).equals("")||user.getPhone_number()==null||user.getAddress().equals("")||user.getAge()==null||user.getName().equals(""))
+        {
+            return "false";
+        }
+        Matcher matcher = pattern.matcher(user.getEmail());
+        if(!matcher.matches()||user.getPhone_number()<=999999999)
+        {
+            return "false";
+        }
         if(userService.adduser(user))
         {
             System.out.println("yes");
