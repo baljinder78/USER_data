@@ -165,3 +165,24 @@ function updatedata() {
 
 
 }
+
+function search()
+{
+    let name=document.getElementById("search").value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("Get", "https://userdetailsbybal.herokuapp.com/search", true);
+    // xhttp.open("PUT", "http://localhost:8080/update", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var list = JSON.parse(this.responseText);
+            for (var i = 0; i < list.length; i++) {
+
+                users(list[i]);
+            }
+
+        }
+    };
+
+    xhttp.send(name);
+}

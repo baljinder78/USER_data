@@ -59,14 +59,14 @@ public class PersonalController {
 
     @RequestMapping(value = "/update",method = RequestMethod.PUT)
     public void update(@RequestBody String data) throws JsonProcessingException {
-        System.out.println(data);
+
         User user = new ObjectMapper().readValue(data, User.class);
-        System.out.println(user.toString());
+
         userService.update(user);
-
-
-
-
-
+    }
+    @RequestMapping(value = "/search")
+    public List<User> search(@RequestBody String name)
+    {
+        return userService.search(name);
     }
 }
