@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
     <link rel="stylesheet" href="../CSS/index.css">
-    <script src="../JS/index.js"></script>
+
 </head>
+
 <body>
-<div id="navbar">
-    <a class="btn" href="https://userdetailsbybal.herokuapp.com/" >Profile</a>
-    <a class="btn" href="https://userdetailsbybal.herokuapp.com/userinfo">User Info</a>
-<!--    <a class="btn" href="/" >Profile</a>-->
-<!--    <a class="btn" href="/userinfo">User Info</a>-->
+    <div id="navbar">
+        <a class="btn" href="https://userdetailsbybal.herokuapp.com/">Profile</a>
+        <a class="btn" href="https://userdetailsbybal.herokuapp.com/userinfo">User Info</a>
+        <!--    <a class="btn" href="/" >Profile</a>-->
+        <!--    <a class="btn" href="/userinfo">User Info</a>-->
     </div>
 
-<div>
-    <form id="my_form" action="https://userdetailsbybal.herokuapp.com/userinfo" onsubmit="adddata()" method="get">
-<!--    <form id="my_form" action="/userinfo" onsubmit="adddata()" method="get">-->
-        Name
-        <input type="text" id="name">
-        Age
-        <input type="number" id="age">
-        Email Id
-        <input type="email" id="email">
-        Address
-        <input type="text" id="address">
-        Phone Number
-        <input type="number" id="ph_no">
+    <div class="modal-content">
+        <h1> Fill the details</h1>
+        <!--    <form id="my_form" action="https://userdetailsbybal.herokuapp.com/userinfo" onsubmit="adddata()" method="get">-->
+        <form id="my_form" onsubmit="adddata()" method="get">
+            <label>Name</label>
+            <input type="text" id="name">
+            <label>Age</label>
+            <input type="number" id="age">
+            <label>Email</label>
+            <input type="email" id="email">
+            <label>Address</label>
+            <input type="text" id="address">
+            <label>Phone Number</label>
+            <input type="number" id="ph_no">
 
-        <input type="submit" placeholder="submit">
 
-    </form>
-</div>
+            <input type="submit" id="submit" placeholder="submit">
+
+        </form>
+    </div>
+    <script src="../JS/index.js"></script>
 </body>
+
 </html>

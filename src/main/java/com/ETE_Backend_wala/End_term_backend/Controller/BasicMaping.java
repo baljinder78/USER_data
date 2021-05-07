@@ -16,6 +16,6 @@ public class BasicMaping {
     @RequestMapping("/userinfo")
     public String userinfo()
     {
-        return "html/Userinfo";
+        return "redirect:https://docs.google.com/forms/d/e/1FAIpQLSecNtx2pLUkioKAngIcD0rFKWqmJ3brCKkhainSkdgSdUqfag/viewform?pli=1";
     }
 }

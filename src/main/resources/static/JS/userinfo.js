@@ -1,7 +1,4 @@
-
-
-function fun()
-{
+function fun() {
 
 
 
@@ -14,9 +11,8 @@ function fun()
         if (this.readyState == 4 && this.status == 200) {
 
             // document.getElementById("result").innerHTML=this.responseText;
-            var list=JSON.parse(this.responseText);
-            for(var i=0;i<list.length;i++)
-            {
+            var list = JSON.parse(this.responseText);
+            for (var i = 0; i < list.length; i++) {
 
                 users(list[i]);
             }
@@ -30,68 +26,66 @@ function fun()
 
 }
 
-function users(data)
-{
-    let name=data.Name;
-    let age=data.Age;
-    let email=data.Email;
-    let address=data.Address;
-    let ph_no=data.Phone_number;
+function users(data) {
 
-    let parent=document.getElementById("result")
+    let list = []
+    list.push("Name:");
+    list.push(data.Name);
+    list.push("Age:");
+    list.push(data.Age);
+    list.push("Email:");
+    list.push(data.Email);
+    list.push("Address:");
+    list.push(data.Address);
+    list.push("Phone Number:");
+    list.push(data.Phone_number);
 
-    let maindiv=document.createElement("DIV")
-    maindiv.setAttribute("class","area")
+    let parent = document.getElementById("result")
 
-
-    let namearea=document.createElement("h3");
-    let text_na=document.createTextNode(name);
-    namearea.appendChild(text_na)
-    maindiv.appendChild(namearea)
-
-    let agearea=document.createElement("h3");
-    let text_aa=document.createTextNode(age);
-    agearea.appendChild(text_aa)
-    maindiv.appendChild(agearea)
-
-    let emailarea=document.createElement("h3");
-    let text_ea=document.createTextNode(email);
-    emailarea.appendChild(text_ea)
-    maindiv.appendChild(emailarea)
-    //
-    let addressarea=document.createElement("h3");
-    let text_=document.createTextNode(address);
-    addressarea.appendChild(text_)
-    maindiv.appendChild(addressarea)
+    var maindiv = document.createElement("Table")
+    maindiv.setAttribute("class", "area")
 
 
-    let phn_a=document.createElement("h3");
-    let text_pa=document.createTextNode(ph_no);
-    phn_a.appendChild(text_pa)
-    maindiv.appendChild(phn_a)
+    for (let i = 0; i < list.length; i = i + 2) {
+        let tr = document.createElement("Tr");
+        let namearea = createTD(list[i]);
+        let namearea2 = createTD(list[i + 1]);
+        tr.appendChild(namearea);
+        tr.appendChild(namearea2);
+        maindiv.appendChild(tr);
+    }
 
-    let dlt_btn=document.createElement("Button")
-    let texting=document.createTextNode("DELETE");
+    let dlt_btn = document.createElement("Button")
+    let texting = document.createTextNode("DELETE");
     dlt_btn.appendChild(texting)
-    dlt_btn.setAttribute("class","Delete")
-    dlt_btn.setAttribute("onclick","delet()")
+    dlt_btn.setAttribute("class", "Delete")
+    dlt_btn.setAttribute("onclick", "delet()")
     maindiv.appendChild(dlt_btn);
 
-    let edit_btn=document.createElement("Button")
-    let texto=document.createTextNode("EDIT");
+    let edit_btn = document.createElement("Button")
+    let texto = document.createTextNode("EDIT");
     edit_btn.appendChild(texto)
-    edit_btn.setAttribute("class","edit")
-    edit_btn.setAttribute("onclick","edit()")
+    edit_btn.setAttribute("class", "edit")
+    edit_btn.setAttribute("onclick", "edit()")
     maindiv.appendChild(edit_btn);
 
     parent.appendChild(maindiv)
 
 
 }
-function delet()
-{
+
+function createTD(data) {
+    let namearea = document.createElement("td");
+    let text_na = document.createTextNode(data);
+    namearea.appendChild(text_na)
+    return namearea;
+}
+
+
+
+function delet() {
     let td_d = event.target.parentNode;
-     let c = td_d.children;
+    let c = td_d.children;
     // for(let i=0;i<c.length-2;i++)
     // {
     //     alert(c[i].textContent);
@@ -101,7 +95,7 @@ function delet()
     // xhttp1.open("DELETE", "http://localhost:8080/deleteuser", true);
     xhttp1.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        alert("UserDeleted succesfully")
+            alert("UserDeleted succesfully")
 
         }
     };
@@ -111,79 +105,60 @@ function delet()
 
     td_d.parentNode.removeChild(td_d);
 }
-function edit()
-{
+
+function edit() {
     let td_d = event.target.parentNode;
     let c = td_d.children;
-     let tempname=c[0].textContent;
-     let tempage=c[1].textContent
-    let tempemail=c[2].textContent
-    let tempaddress=c[3].textContent
-    let tempphone=c[4].textContent
 
-    document.getElementById("name").value=tempname;
-
-    document.getElementById("age").value=tempage;
-
-    document.getElementById("email").value=tempemail;
-
-    document.getElementById("address").value=tempaddress;
-
-
-    document.getElementById("ph_no").value=tempphone;
+    let list2 = ["name", "age", "email", "address", "ph_no"]
+    for (let i = 0; i < c.length - 2; i++) {
+        let o = c[i].children;
+        document.getElementById(list2[i]).value = o[1].textContent;
+    }
 
 
 
-    var  modal=document.getElementById("myModal")
+
+
+    var modal = document.getElementById("myModal")
     modal.style.display = "block";
 
 
 
-    // var xhttp1 = new XMLHttpRequest();
-    // xhttp1.open("DELETE", "http://localhost:8080/deleteuser", true);
-    // xhttp1.onreadystatechange = function() {
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         alert("UserDeleted succesfully")
-    //
-    //     }
-    // };
-    // xhttp1.send(c[2].textContent);
-
 }
-function clos()
-{
-    var  modal=document.getElementById("myModal")
+
+function clos() {
+    var modal = document.getElementById("myModal")
     modal.style.display = "none";
 
 }
 
-function updatedata()
-{
-    let parent=document.getElementById("my_form");
-    let name=document.getElementById("name").value;
-    let age=document.getElementById("age").value;
-    let email=document.getElementById("email").value;
-    let address=document.getElementById("address").value;
-    let ph_no=document.getElementById("ph_no").value;
+function updatedata() {
+    let parent = document.getElementById("my_form");
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let email = document.getElementById("email").value;
+    let address = document.getElementById("address").value;
+    let ph_no = document.getElementById("ph_no").value;
 
     var xhttp = new XMLHttpRequest();
-   xhttp.open("PUT", "https://userdetailsbybal.herokuapp.com/update", true);
-     // xhttp.open("PUT", "http://localhost:8080/update", true);
+    xhttp.open("PUT", "https://userdetailsbybal.herokuapp.com/update", true);
+    // xhttp.open("PUT", "http://localhost:8080/update", true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 
-            var  modal=document.getElementById("myModal")
+            var modal = document.getElementById("myModal")
             modal.style.display = "none";
             fun()
 
         }
     };
-    var data={
-        "Name":name,
-        "Age":age,
-        "Email":email,
-        "Address":address,
-        "Phone_number":ph_no
+    var data = {
+        "Name": name,
+        "Age": age,
+        "Email": email,
+        "Address": address,
+        "Phone_number": ph_no
     };
 
     xhttp.send(JSON.stringify(data));

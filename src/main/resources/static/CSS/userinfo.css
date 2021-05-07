@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
 body {
     background-image: url("../images/000000000000001kanki.png");
     width: 1528px;
     height: 700px;
-    color: brown;
+    color: #000201;
     overscroll-behavior-x: contain;
     background-repeat: no-repeat;
 }
@@ -33,20 +34,78 @@ body {
     color: #000c1d;
 }
 
+#result {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    margin-top: 1%;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+}
+
+.area {
+    flex-direction: column;
+    justify-content: space-around;
+    width: fit-content;
+    border: 2px solid #000201;
+    background-color: #e1e5ea;
+    padding: 2%;
+    margin: 2%;
+}
+
+.area tr {
+    padding-bottom: 10%;
+}
+
+.Delete {
+    background-color: #fb3640;
+    border: 2px solid #000201;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.edit {
+    background-color: #81b214;
+    border: 2px solid #000201;
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+}
+
+.modal {
+    position: fixed;
+    display: none;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Modal Content */
+
 .modal-content {
     padding: 10px;
-    background-color: #d0d7ea;
+    background-color: #dddddd;
     color: black;
     width: 40%;
     margin: auto;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    border: 2px solid #000201;
+    margin-top: 10%;
 }
 
 #my_form {
     display: flex;
     flex-direction: column;
-    background-color: #d0d7ea;
+    background-color: #dddddd;
     color: black;
     width: 50%;
     margin: auto;
@@ -88,4 +147,21 @@ body {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 20px;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
