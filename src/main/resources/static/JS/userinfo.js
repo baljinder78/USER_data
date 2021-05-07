@@ -166,7 +166,7 @@ function updatedata() {
 
 }
 
-function search()
+function searh()
 {
     let name=document.getElementById("search").value;
     var xhttp = new XMLHttpRequest();
