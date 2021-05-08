@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface Userrepo extends JpaRepository<User,String> {
 
-    @Query("select n from User n where n.Name='%keyword%'")
-    public List<User> searchbyname(String keyword);
+    @Query("select n from User n where n.Name like '%keyword%'")
+    public List<User> searchbyName(String keyword);
 
 }
