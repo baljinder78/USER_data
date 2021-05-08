@@ -59,11 +59,6 @@ public class UserService  {
 
 
     }
-    public List<User> search(String name)
-    {
 
-           return userrepo.searchbyName(name);
-
-    }
 }
 

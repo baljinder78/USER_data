@@ -2,6 +2,8 @@ package com.ETE_Backend_wala.End_term_backend.Controller;
 
 
 import com.ETE_Backend_wala.End_term_backend.model.User;
+import com.ETE_Backend_wala.End_term_backend.repo.UserRepository;
+import com.ETE_Backend_wala.End_term_backend.repo.Userrepo;
 import com.ETE_Backend_wala.End_term_backend.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,6 +21,10 @@ public class PersonalController {
     Pattern pattern = Pattern.compile(regex);
     @Autowired
     public UserService userService;
+
+
+    @Autowired
+    public Userrepo userRepository;
 
     @RequestMapping(value = "/add",method =RequestMethod.POST)
     public String adduser(@RequestBody String data) throws JsonProcessingException {
@@ -64,9 +70,12 @@ public class PersonalController {
 
         userService.update(user);
     }
-    @RequestMapping(value = "/search")
+    @RequestMapping( "/search")
     public List<User> search(@RequestBody String name)
     {
-        return userService.search(name);
+
+        return userRepository.searchByName(name);
+
+
     }
 }

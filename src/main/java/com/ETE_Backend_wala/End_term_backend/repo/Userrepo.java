@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+
 public interface Userrepo extends JpaRepository<User,String> {
 
-    @Query("select n from User n where n.Name like '%keyword%'")
-    public List<User> searchbyName(String keyword);
+    @Query("select u from User u where u.Name like %:keyword%")
+    public List<User> searchByName(String keyword);
 
 }
