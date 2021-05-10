@@ -12,6 +12,7 @@ function fun() {
 
             // document.getElementById("result").innerHTML=this.responseText;
             var list = JSON.parse(this.responseText);
+            createdivi();
             for (var i = 0; i < list.length; i++) {
 
                 users(list[i]);
@@ -169,20 +170,35 @@ function updatedata() {
 function searh()
 {
     let name=document.getElementById("search").value;
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("Get", "https://userdetailsbybal.herokuapp.com/search", true);
-    // xhttp.open("PUT", "http://localhost:8080/update", true);
-    xhttp.onreadystatechange = function() {
+    var xhttp3 = new XMLHttpRequest();
+    xhttp3.open("POST", "https://userdetailsbybal.herokuapp.com/search", true);
+    // xhttp3.open("POST", "http://localhost:8080/search", true);
+    xhttp3.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 
             var list = JSON.parse(this.responseText);
+
+            document.getElementById("result").remove();
+
+            createdivi()
             for (var i = 0; i < list.length; i++) {
 
                 users(list[i]);
+
             }
+
+
 
         }
     };
+    xhttp3.send(name);
+}
 
-    xhttp.send(name);
+
+function  createdivi()
+{
+    let divo=document.getElementById("result_set");
+    let divo2=document.createElement("div");
+    divo2.setAttribute("id","result");
+    divo.appendChild(divo2);
 }

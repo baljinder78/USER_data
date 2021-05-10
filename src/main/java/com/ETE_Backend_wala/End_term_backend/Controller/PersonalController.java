@@ -70,12 +70,9 @@ public class PersonalController {
 
         userService.update(user);
     }
-    @RequestMapping( "/search")
+    @RequestMapping( value = "/search",method = RequestMethod.POST)
     public List<User> search(@RequestBody String name)
     {
-
         return userRepository.searchByName(name);
-
-
     }
 }
