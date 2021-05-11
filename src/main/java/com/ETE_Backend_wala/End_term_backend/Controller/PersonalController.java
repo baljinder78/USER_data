@@ -28,9 +28,9 @@ public class PersonalController {
 
     @RequestMapping(value = "/add",method =RequestMethod.POST)
     public String adduser(@RequestBody String data) throws JsonProcessingException {
-        System.out.println(data);
+//        System.out.println(data);
         User user = new ObjectMapper().readValue(data, User.class);
-        System.out.println(user.toString());
+//        System.out.println(user.toString());
         if((user.getEmail()).equals("")||user.getPhone_number()==null||user.getAddress().equals("")||user.getAge()==null||user.getName().equals(""))
         {
             return "false";
@@ -52,14 +52,14 @@ public class PersonalController {
     @RequestMapping("/getallusers")
     public List<User> getusers()  {
         List<User> userList=userService.getallusers();
-        System.out.println(userList);
+//        System.out.println(userList);
         return userList;
     }
 
     @RequestMapping(value = "/deleteuser",method = RequestMethod.DELETE)
     public void deleteuser(@RequestBody String email)
     {
-        System.out.println(email);
+//        System.out.println(email);
         userService.deleteuser(email);
     }
 
@@ -74,5 +74,11 @@ public class PersonalController {
     public List<User> search(@RequestBody String name)
     {
         return userRepository.searchByName(name);
+
+    }
+
+    @RequestMapping(value = "/searchbyname",method = RequestMethod.POST)
+    public List<String> searchnames(@RequestBody String name){
+        return userRepository.searchallName(name);
     }
 }

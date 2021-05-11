@@ -82,29 +82,26 @@ function createTD(data) {
     return namearea;
 }
 
-
-
 function delet() {
     let td_d = event.target.parentNode;
     let c = td_d.children;
-    // for(let i=0;i<c.length-2;i++)
-    // {
-    //     alert(c[i].textContent);
-    // }
+
     var xhttp1 = new XMLHttpRequest();
     xhttp1.open("DELETE", "https://userdetailsbybal.herokuapp.com/deleteuser", true);
     // xhttp1.open("DELETE", "http://localhost:8080/deleteuser", true);
     xhttp1.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             alert("UserDeleted succesfully")
+            td_d.parentNode.removeChild(td_d);
 
         }
     };
 
 
-    xhttp1.send(c[2].textContent);
+    let o = c[2].children;
+    xhttp1.send(o[1].textContent);
 
-    td_d.parentNode.removeChild(td_d);
+
 }
 
 function edit() {
@@ -167,9 +164,11 @@ function updatedata() {
 
 }
 
-function searh()
-{
-    let name=document.getElementById("search").value;
+function searh() {
+    let name = document.getElementById("search").value;
+    let n = document.getElementById("search_result")
+    if (n != null)
+        n.remove()
     var xhttp3 = new XMLHttpRequest();
     xhttp3.open("POST", "https://userdetailsbybal.herokuapp.com/search", true);
     // xhttp3.open("POST", "http://localhost:8080/search", true);
@@ -194,11 +193,84 @@ function searh()
     xhttp3.send(name);
 }
 
-
-function  createdivi()
-{
-    let divo=document.getElementById("result_set");
-    let divo2=document.createElement("div");
-    divo2.setAttribute("id","result");
+function createdivi() {
+    let divo = document.getElementById("result_set");
+    let divo2 = document.createElement("div");
+    divo2.setAttribute("id", "result");
     divo.appendChild(divo2);
+}
+
+function searh2(data) {
+    let n = document.getElementById("search_result")
+    if (n != null)
+        n.remove()
+    let name = data.textContent;
+    var xhttp3 = new XMLHttpRequest();
+    xhttp3.open("POST", "https://userdetailsbybal.herokuapp.com/search", true);
+    // xhttp3.open("POST", "http://localhost:8080/search", true);
+    xhttp3.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var list = JSON.parse(this.responseText);
+
+            document.getElementById("result").remove();
+
+            createdivi()
+            for (var i = 0; i < list.length; i++) {
+
+                users(list[i]);
+
+            }
+
+
+
+        }
+    };
+    xhttp3.send(name);
+}
+
+function searchbyrname() {
+    let name = document.getElementById("search").value;
+    let n = document.getElementById("search_result")
+    if (n != null)
+        n.remove()
+    let parent = document.getElementById("search_area_parent")
+    var xhttp4 = new XMLHttpRequest();
+    xhttp4.open("POST", "https://userdetailsbybal.herokuapp.com/searchbyname", true);
+    // xhttp4.open("POST", "http://localhost:8080/searchbyname", true);
+    xhttp4.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let parent2 = document.createElement("div");
+            parent2.setAttribute("id", "search_result")
+            if (this.responseText == "[]") {
+                addnames("No name found...", parent2)
+            }
+            var list = JSON.parse(this.responseText);
+
+
+            for (var i = 0; i < list.length; i++) {
+
+                addnames(list[i], parent2);
+
+            }
+            parent.appendChild(parent2);
+
+
+
+        }
+    };
+    xhttp4.send(name);
+
+}
+
+function addnames(data, parent) {
+
+    let newa = document.createElement("a");
+    let newa_text = document.createTextNode(data);
+    newa.appendChild(newa_text)
+    if (data != "No name found...")
+        newa.setAttribute("onclick", "searh2(this)");
+
+    parent.appendChild(newa);
+
 }

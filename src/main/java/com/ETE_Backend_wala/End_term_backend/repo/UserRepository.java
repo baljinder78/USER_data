@@ -11,4 +11,10 @@ public abstract class UserRepository implements Userrepo{
     public List<User> searchByName(String keyword) {
         return searchByName(keyword);
     }
+
+    public List<String> searchallName(String keyword){
+         return searchallName(keyword);
+
+
+    }
 }

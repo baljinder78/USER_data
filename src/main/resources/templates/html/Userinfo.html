@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../CSS/userinfo.css">
     <script src="../JS/userinfo.js"></script>
 </head>
@@ -40,13 +41,19 @@
     <div id="navbar">
         <a class="btn" href="https://userdetailsbybal.herokuapp.com/">Profile</a>
         <a class="btn" href="https://userdetailsbybal.herokuapp.com/userinfo">User Info</a>
-<!--            <a class="btn" href="/" >Profile</a>-->
-<!--           <a class="btn" href="/userinfo">User Info</a>-->
-    </div>
-    <div>
-            <input type="text" id="search" >
-            <input type="submit"  placeholder="search" onclick="searh()">
+        <!--            <a class="btn" href="/" >Profile</a>-->
+        <!--           <a class="btn" href="/userinfo">User Info</a>-->
 
+
+        <div id="search_area">
+            <input type="text" placeholder="Search.." id="search" onkeyup="searchbyrname()">
+            <button type="submit" onclick="searh()"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    <div id="search_area_parent">
+        <!-- <div id="search_result">
+
+        </div> -->
     </div>
     <div id="result_set">
 
